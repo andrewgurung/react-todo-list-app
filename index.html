@@ -7,35 +7,41 @@
     <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <!-- Bootstrap CSS-->
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
+
+    <!-- Customized Boostrap CSS--> 
+    <link href="https://bootswatch.com/superhero/bootstrap.min.css" rel="stylesheet">
 
     <style>
       body {
         padding: 50px;
-        background-color: #66CCFF;
         font-family: 'Roboto Slab', serif;
       }
 
       .todoListMain .header input {
         padding: 10px;
-        font-size: 16px;
+        font-size: 14px;
         border: 2px solid #FFF;
       }
 
-      .todoListMain .header button {
-        padding: 10px;
-        font-size: 16px;
-        margin: 10px;
-        background-color: #0066FF;
-        color: #FFF;
-        border: 2px solid #0066FF;
+      .todoListMain .theList {
+        list-style: none;
+        padding-left: 0;
       }
 
-      .todoListMain .header button:hover {
-        background-color: #003399;
-        border: 2px solid #003300;
-        cursor: pointer;
+      .todoListMain .theList li {
+        padding: 15px;
+        margin-bottom: 15px;
       }
 
+      .floatNone {
+        float: none !important;
+      }
+
+      .bg-info {
+          background-color: #ec971f !important;
+      }
     </style>
   </head>
   <body>
@@ -52,7 +58,7 @@
 
           // Create a list element for each entry
           function createTaskElement(item) {
-            return <li key={item.key}> {item.text} </li>
+             return <li key={item.key} className="bg-info"> {item.text} </li>
           }
 
           // Collection of list elements
@@ -60,7 +66,7 @@
 
           // Render
           return (
-            <ul className="theList">
+            <ul className="theList col-md-8 col-sm-8">
               {listItems}
             </ul>
           );
@@ -98,26 +104,39 @@
 
         render: function() {
           return (
-            <div className="todoListMain">
-              <div className="header">
-                <form onSubmit={this.addItem}>
-                  <input ref={(a) => this._inputElement = a} placeholder="What needs to be done?"></input>
-                  <button type="submit">Add</button>
+            <div className="todoListMain row">
+              <div className="header col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                <form onSubmit={this.addItem} className="form-horizontal">
+                  <div className="form-group">
+                    <div className="col-md-8 col-sm-8"><input ref={(a) => this._inputElement = a} placeholder="What needs to be done?" className="form-control"></input></div>
+                    <div className="col-md-2 col-sm-2"><button type="submit" className="btn btn-primary">Add</button></div>
+                  </div>
                 </form>
               </div>
-              <TodoItems entries={this.state.items}/>
+              <div className="col-md-8 col-md-offset-2">
+                <TodoItems entries={this.state.items}/>
+              </div>
             </div>
           );
         }
       });
 
+      //set an offset equal to half of the remaining size of the row
       ReactDOM.render(
-        <div>
-          <h1>React Todo List App</h1>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+              <h1>React Todo List App</h1>
+            </div>
+          </div>
           <TodoList />
         </div>,
         destination
       );
     </script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Bootstrap JS-->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
 </html>

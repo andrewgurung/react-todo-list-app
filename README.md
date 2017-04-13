@@ -13,3 +13,4 @@ Installation
 Skills
 -------
 - React JS
+- Bootstrap
