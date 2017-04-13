@@ -48,7 +48,22 @@
 
       var TodoItems = React.createClass({
         render: function() {
-          return(<h3>Todo Items</h3>);
+          var todoEntries = this.props.entries;
+
+          // Create a list element for each entry
+          function createTaskElement(item) {
+            return <li key={item.key}> {item.text} </li>
+          }
+
+          // Collection of list elements
+          var listItems = todoEntries.map(createTaskElement);
+
+          // Render
+          return (
+            <ul className="theList">
+              {listItems}
+            </ul>
+          );
         }
       });
 
