@@ -19,9 +19,25 @@
     <script type="text/babel">
       var destination = document.getElementById('container');
 
+      var TodoList = React.createClass({
+        render: function() {
+          return (
+            <div className="todoListMain">
+              <div className="header">
+                <form>
+                  <input placeholder="Enter task"></input>
+                  <button type="submit">Add</button>
+                </form>
+              </div>
+            </div>
+          );
+        }
+      });
+
       ReactDOM.render(
         <div>
-          <h1>React Todo List App</h1>
+          <h2>React Todo List App</h2>
+          <TodoList />
         </div>,
         destination
       );
