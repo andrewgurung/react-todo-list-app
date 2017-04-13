@@ -47,11 +47,21 @@
       var destination = document.getElementById('container');
 
       var TodoList = React.createClass({
+        getInitialState: function(){
+            return {
+              items: []
+            };
+        },
+
+        addItem: function(e) {
+          alert("Submitted");
+        },
+
         render: function() {
           return (
             <div className="todoListMain">
               <div className="header">
-                <form>
+                <form onSubmit={this.addItem}>
                   <input placeholder="What needs to be done?"></input>
                   <button type="submit">Add</button>
                 </form>
