@@ -46,6 +46,12 @@
     <script type="text/babel">
       var destination = document.getElementById('container');
 
+      var TodoItems = React.createClass({
+        render: function() {
+          return(<h3>Todo Items</h3>);
+        }
+      });
+
       var TodoList = React.createClass({
         getInitialState: function(){
             return {
@@ -84,6 +90,7 @@
                   <button type="submit">Add</button>
                 </form>
               </div>
+              <TodoItems entries={this.state.items}/>
             </div>
           );
         }
